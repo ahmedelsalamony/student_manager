@@ -16,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.ahmed.student_manager.instructor.inst_Home_Instructor_activity;
 
 
 import org.json.JSONException;
@@ -139,7 +140,8 @@ public class WebServices {
 
 
                         } else if (user_type.equals("instructor")) {
-
+                           Intent i=new Intent(activity,inst_Home_Instructor_activity.class);
+                           activity.startActivity(i);
 
                         }
 
@@ -273,6 +275,36 @@ public class WebServices {
 
 
 //----------------------------------------------------------------------------------------------------------------------//
+
+    //-------------------------------------------------------------------------------------------------//
+    public void getOffCoursesToInstructor(final Activity activity,final request_interface request_interface ) {
+
+        queue = Volley.newRequestQueue(activity);
+        StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                request_interface.onResponse(response);
+            }
+
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                request_interface.onError();
+            }
+        })
+
+        {
+            @Override
+            protected java.util.Map<String, String> getParams() throws AuthFailureError {
+                java.util.Map<String, String> params = new HashMap<String, String>();
+
+                params.put(TAG, GET_OFF_COURSES_TO_INSTRUCTOR);
+                return params;
+            }
+        };
+        queue.add(request);
+    }
 
 
 

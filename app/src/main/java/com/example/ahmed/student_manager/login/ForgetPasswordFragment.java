@@ -80,7 +80,7 @@ public class ForgetPasswordFragment extends Fragment {
                                     dialog.setMessage("Your Correct password Sent to your E-mail");
                                     dialog.setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                         @Override
-                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                        public void onClick(DialogInterface dialogInterface, int inst_Info) {
 
                                             dialogInterface .dismiss();
 

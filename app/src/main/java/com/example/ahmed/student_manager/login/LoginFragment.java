@@ -13,6 +13,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ahmed.student_manager.R;
 import com.example.ahmed.student_manager.web.WebServices;
@@ -28,6 +29,7 @@ public class LoginFragment extends Fragment {
 
 
     private EditText mPasswordView;
+    private AutoCompleteTextView mUserName;
     private Button signUp;
 
     private WebServices web;
@@ -42,6 +44,8 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View v= inflater.inflate(R.layout.login_fragment_login, parent, false);
 
+        mPasswordView = (EditText) v.findViewById(R.id.password);
+        mUserName = (AutoCompleteTextView)v.findViewById(R.id.email);
 
 
 
@@ -64,7 +68,7 @@ public class LoginFragment extends Fragment {
 
 
         // Set up the login form.
-        mPasswordView = (EditText) v.findViewById(R.id.password);
+
 
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -82,6 +86,7 @@ public class LoginFragment extends Fragment {
         mEmailSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 attemptLogin();
             }
         });
@@ -96,12 +101,9 @@ public class LoginFragment extends Fragment {
 
 
     //TODO Login Action
-    private void attemptLogin() {
-
-
-
-
-
+    private void attemptLogin()
+    {
+    web.user_login(getActivity(),mUserName.getText().toString().trim(),mPasswordView.getText().toString().trim());
     }
 
     @Override
