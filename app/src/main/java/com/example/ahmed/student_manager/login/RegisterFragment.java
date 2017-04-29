@@ -1,5 +1,6 @@
 package com.example.ahmed.student_manager.login;
 
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -32,18 +33,14 @@ import static com.daimajia.androidanimations.library.BaseViewAnimator.DURATION;
 
 public class RegisterFragment extends Fragment {
 
-    TextView txtTitle;
-    EditText edtUserName,edtPassword,edtConfirmPassword,edtEmail,edtPhone,edtAddress,edtCharity;
-    RadioButton rdCharity,rdRestaurant;
-    String strUserName, strPassword, strConfirm, strEmail, strPhone, strAddress, strCharity;
-
-    boolean flag = false;
-    Intent intent;
-
-
+    EditText edtUserName,edtPassword,edtConfirmPassword,edtEmail,edtPhone,edGrade,edName,edCurrentDegree , edUniqueNum,edDepartment;
+    RadioButton rdStudent,rdInstructor;
+    String strUserName, strPassword, strConfirm, strEmail, strDepartmet,strPhone, strGrade, strName,strCurrentDegree,strUniqueNum ,strType;
 
 
     private WebServices web;
+
+    TextInputLayout  Grade, UniqueNumber ,CurrentDegree;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,6 +50,7 @@ public class RegisterFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.login_register_fragmant, parent, false);
+        MainActivity.sFlag=2;
 
 
         web=new WebServices();
@@ -62,83 +60,106 @@ public class RegisterFragment extends Fragment {
         edtConfirmPassword=(EditText)v.findViewById(R.id.xConfirmPassword);
         edtEmail=(EditText)v.findViewById(R.id.xEmail);
         edtPhone=(EditText)v.findViewById(R.id.xPhone);
-        edtAddress=(EditText)v.findViewById(R.id.xAddress);
-        edtCharity=(EditText)v.findViewById(R.id.xCharityName);
-        rdCharity=(RadioButton)v.findViewById(R.id.xrdCharity);
-        rdRestaurant=(RadioButton)v.findViewById(R.id.xrdRestaurant);
+        edDepartment=(EditText)v.findViewById(R.id.xDepartment);
+        edUniqueNum=(EditText)v.findViewById(R.id.xNum);
+        rdStudent=(RadioButton)v.findViewById(R.id.xStudent);
+        rdInstructor=(RadioButton)v.findViewById(R.id.xInstructor);
 
-        strUserName = edtUserName.getText().toString();
-        strPassword = edtPassword.getText().toString();
-        strConfirm = edtConfirmPassword.getText().toString();
-        strEmail = edtEmail.getText().toString();
-        strPhone = edtPhone.getText().toString();
-        strAddress = edtAddress.getText().toString();
-        strCharity = edtCharity.getText().toString();
+        edName=(EditText)v.findViewById(R.id.xName);
+        edCurrentDegree=(EditText)v.findViewById(R.id.xCurrentDegree);
+        edGrade=(EditText)v.findViewById(R.id.xGrade);
+
+        Grade= (TextInputLayout) v.findViewById(R.id.input_layout_Grade);
+        CurrentDegree= (TextInputLayout) v.findViewById(R.id.input_layout_CurrentDegree);
+        UniqueNumber= (TextInputLayout) v.findViewById(R.id.input_layout_Num);
+
+        Grade.setVisibility(View.INVISIBLE);
+        CurrentDegree.setVisibility(View.INVISIBLE);
+        UniqueNumber.setVisibility(View.INVISIBLE);
+
+
+
+
+
+
+
 
         Button btn=(Button)v.findViewById(R.id.xbtnsave);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                String userName = edtUserName.getText().toString();
-                String password = edtPassword.getText().toString();
-                String email = edtEmail.getText().toString();
-                String phone = edtPhone.getText().toString();
-                String address = edtAddress.getText().toString();
-                String type = null;
+                strUserName = edtUserName.getText().toString();
+                strPassword = edtPassword.getText().toString();
+                strConfirm = edtConfirmPassword.getText().toString();
+                strEmail = edtEmail.getText().toString();
+                strPhone = edtPhone.getText().toString();
+                strCurrentDegree = edCurrentDegree.getText().toString();
+                strGrade = edGrade.getText().toString();
+                strDepartmet = edDepartment.getText().toString();
+                strUniqueNum = edUniqueNum.getText().toString();
+                strName = edName.getText().toString();
 
-                if (rdRestaurant.isChecked()) {
-                    type = rdRestaurant.getText().toString();
+                if (rdStudent.isChecked()) {
+                    strType = rdStudent.getText().toString();
+
+
                 } else {
-                    type = rdCharity.getText().toString();
+                    strType = rdInstructor.getText().toString();
                 }
 
-                String typeName = edtCharity.getText().toString();
+                String typeName = edName.getText().toString();
+
 
                 if (edtUserName.getText().toString().trim().equals("")){
                     edtUserName.setError("enter valid username");
                 }else if (edtPassword.getText().toString().trim().equals("")){
                     edtPassword.setError("enter valid password");
-                }else if (!edtConfirmPassword.getText().toString().trim().equals(password)) {
+                }else if (!edtConfirmPassword.getText().toString().trim().equals(edtPassword.getText().toString().trim())) {
                     edtConfirmPassword.setError("password not match");
                 }else if (edtConfirmPassword.getText().toString().trim().equals("")){
                     edtConfirmPassword.setError("error ");
                 }else if (edtPhone.getText().toString().trim().toString().equals("")){
                     edtPhone.setError("enter valid phone");
-                }else if (edtAddress.getText().toString().trim().equals("")){
-                    edtAddress.setError("enter valid address");
-                }else if(edtCharity.getText().toString().trim().equals("")){
-                    edtCharity.setError("enter valid charity name");
+                }else if (edUniqueNum.getText().toString().trim().equals("")){
+                    edUniqueNum.setError("enter valid address");
+                }else if(edName.getText().toString().trim().equals("")){
+                    edName.setError("enter valid charity name");
                 }else if (!isValidEmailAddress(edtEmail.getText().toString().trim())){
                     edtEmail.setError("enter valid email");
                 }else{
 
                     // TODO add_user
 
+                    web.addUser(getActivity(),typeName,strUniqueNum,strDepartmet, strGrade,strCurrentDegree,strPhone,strEmail,strUserName,strPassword,strType);
                 }
 
             }
         });
 
-        rdCharity.setOnTouchListener(new View.OnTouchListener() {
+        rdStudent.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
 
+                CurrentDegree.setVisibility(View.VISIBLE);
+                Grade.setVisibility(View.VISIBLE);
+                UniqueNumber.setVisibility(View.VISIBLE);
+                edUniqueNum.setHint("enter college Number");
 
-                edtCharity.setVisibility(View.VISIBLE);
-                edtCharity.setHint("Charity name");
 
                 return false;
             }
         });
 
-        rdRestaurant.setOnTouchListener(new View.OnTouchListener() {
+        rdInstructor.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
 
+                UniqueNumber.setVisibility(View.VISIBLE);
+                CurrentDegree.setVisibility(View.INVISIBLE);
+                Grade.setVisibility(View.INVISIBLE);
+                edUniqueNum.setHint("enter Job Number");
 
-                edtCharity.setVisibility(View.VISIBLE);
-                edtCharity.setHint("Restaurant name");
                 return false;
             }
         });
@@ -154,38 +175,14 @@ public class RegisterFragment extends Fragment {
         return m.matches();
     }
 
-    public Boolean validate() {
-        Boolean out = true;
-        if (TextUtils.isEmpty(strUserName)) {
-            edtUserName.setError("Enter user name");
-            out = false;
-        } else if (TextUtils.isEmpty(strPassword)) {
-            edtPassword.setError("Enter password");
-            out = false;
-        } else if (TextUtils.isEmpty(strConfirm)) {
-            edtConfirmPassword.setError("Password miss match ");
-            out = false;
-        } else if (TextUtils.isEmpty(strPhone)) {
-            edtPhone.setError("enter your phone");
-            out = false;
-        } else if (TextUtils.isEmpty(strAddress)) {
-            edtAddress.setError("enter your ");
-            out = false;
-        } else if (TextUtils.isEmpty(strCharity)) {
-            edtCharity.setError("enter charity name");
-            out = false;
-        }
 
-
-        return out;
-    }
 
 
 
 
     @Override
     public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
-        return CubeAnimation.create(CubeAnimation.UP, enter, DURATION);
+        return CubeAnimation.create(CubeAnimation.UP, enter, 400);
     }
 
 

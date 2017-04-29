@@ -13,7 +13,9 @@ public class MainActivity extends AppCompatActivity {
 
     private FragmentManager fm;
     FragmentTransaction ft;
-    int counter = 0;
+
+    static int sFlag=0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,4 +53,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onBackPressed() {
+        if(sFlag==1){
+
+            finish();
+        }else {
+
+            fm = getSupportFragmentManager();
+            ft = fm.beginTransaction();
+            ft.add(R.id.activity_main, new LoginFragment());
+            ft.addToBackStack(null);
+            ft.commit();
+
+        }
+    }
 }

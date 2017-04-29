@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.ahmed.student_manager.student.ShowCoursesFragment">
+
+
+
+<ListView
+    android:layout_marginTop="10dp"
+    android:id="@+id/LisView_CoursesRegistered"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"/>
+
+    <ListView
+
+        android:layout_marginTop="50dp"
+        android:id="@+id/LisView_Attend"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+
+</LinearLayout>

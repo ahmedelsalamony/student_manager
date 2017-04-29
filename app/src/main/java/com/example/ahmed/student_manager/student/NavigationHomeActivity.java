@@ -1,4 +1,4 @@
-package com.example.ahmed.student_manager.instructor;
+package com.example.ahmed.student_manager.student;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,31 +17,39 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.ahmed.student_manager.R;
-import com.example.ahmed.student_manager.student.*;
+import com.example.ahmed.student_manager.login.ForgetPasswordFragment;
 import com.example.ahmed.student_manager.web.WebServices;
 
-public class inst_Home_Instructor_activity extends AppCompatActivity
+public class NavigationHomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+   private TextView mUserName;
+   private WebServices mwWebServices;
 
-    WebServices mWebServices;
-    static int sInstHomeInstructorActivity=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.inst_activity_home_instructor_activity);
+        setContentView(R.layout.student_activity_navigation_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        mwWebServices=new WebServices();
+        mwWebServices.sharedPreferences=getSharedPreferences("manager",0);
 
-        mWebServices =new WebServices();
-        mWebServices.sharedPreferences =getSharedPreferences("manager",0);
 
-        inst_Info inst_info = new inst_Info();
-        FragmentManager fm=getSupportFragmentManager();
-        FragmentTransaction ft= fm.beginTransaction();
-        ft.replace(R.id.content_inst__home__instructor_activity,inst_info);
+
+
+        // add Default Fragment
+        StudentInformationFragment studentInformationFragment=new StudentInformationFragment();
+        FragmentManager fm =getSupportFragmentManager();
+        FragmentTransaction ft=fm.beginTransaction();
+        ft.replace(R.id.content_navigation_home,studentInformationFragment);
         ft.commit();
+
+
+
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +59,7 @@ public class inst_Home_Instructor_activity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -62,43 +71,27 @@ public class inst_Home_Instructor_activity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         View headerView = navigationView.getHeaderView(0);
-        TextView mUserName = (TextView) headerView.findViewById(R.id.inst_NName);
-        mUserName.setText(""+mWebServices.sharedPreferences.getString("user_name",""));
+        mUserName = (TextView) headerView.findViewById(R.id.textView_HeaderNav_userName);
+        mUserName.setText(""+mwWebServices.sharedPreferences.getString("user_name",""));
+
+
+
     }
 
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START))
-        {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
-        else if (sInstHomeInstructorActivity==1)
-        {
-         finish();
-        }
-        else if (sInstHomeInstructorActivity==2)
-        {
-            inst_Info inst_info = new inst_Info();
-            FragmentManager fm=getSupportFragmentManager();
-            FragmentTransaction ft= fm.beginTransaction();
-            ft.replace(R.id.content_inst__home__instructor_activity,inst_info);
-            ft.commit();
-        }else if (sInstHomeInstructorActivity==3)
-        {
-            inst_Info inst_info = new inst_Info();
-            FragmentManager fm=getSupportFragmentManager();
-            FragmentTransaction ft= fm.beginTransaction();
-            ft.replace(R.id.content_inst__home__instructor_activity,inst_info);
-            ft.commit();
-        }
-        }
-
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.inst__home__instructor_activity, menu);
+        getMenuInflater().inflate(R.menu.navigation_home, menu);
         return true;
     }
 
@@ -124,31 +117,40 @@ public class inst_Home_Instructor_activity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            display_off_courses display_off_courses = new display_off_courses();
-            FragmentManager fm=getSupportFragmentManager();
-            FragmentTransaction ft= fm.beginTransaction();
-            ft.replace(R.id.content_inst__home__instructor_activity,display_off_courses);
+            StudentInformationFragment studentInformationFragment=new StudentInformationFragment();
+            FragmentManager fm =getSupportFragmentManager();
+            FragmentTransaction ft=fm.beginTransaction();
+            ft.replace(R.id.content_navigation_home,studentInformationFragment);
+
             ft.commit();
-        }
 
-        else if (id == R.id.nav_gallery) {
-            // Attendance
+            // Handle the camera action
+        } else if (id == R.id.nav_gallery) {
 
-            AttendanceFragment attendanceFragment = new AttendanceFragment();
-            FragmentManager fm=getSupportFragmentManager();
-            FragmentTransaction ft= fm.beginTransaction();
-            ft.replace(R.id.content_inst__home__instructor_activity,attendanceFragment);
+            SearchCoursesFragment searchCoursesFragment=new SearchCoursesFragment();
+            FragmentManager fm =getSupportFragmentManager();
+            FragmentTransaction ft=fm.beginTransaction();
+            ft.replace(R.id.content_navigation_home,searchCoursesFragment);
             ft.commit();
+
+
         }
-
-
 
         else if (id == R.id.nav_slideshow) {
-         // replys
-            com.example.ahmed.student_manager.instructor.DiscussionFragment discussionFragment = new DiscussionFragment();
-            FragmentManager fm=getSupportFragmentManager();
-            FragmentTransaction ft= fm.beginTransaction();
-            ft.replace(R.id.content_inst__home__instructor_activity,discussionFragment);
+
+            ShowCoursesFragment showCoursesFragment=new ShowCoursesFragment();
+            FragmentManager fm =getSupportFragmentManager();
+            FragmentTransaction ft=fm.beginTransaction();
+            ft.replace(R.id.content_navigation_home,showCoursesFragment);
+            ft.commit();
+
+
+        } else if (id == R.id.nav_manage) {
+
+            DiscussionFragment discussionFragment = new DiscussionFragment();
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.content_navigation_home, discussionFragment);
             ft.commit();
 
         }

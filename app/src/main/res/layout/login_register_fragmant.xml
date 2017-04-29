@@ -4,6 +4,8 @@
     android:id="@+id/activity_registeration"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fef6eb"
+
     android:paddingLeft="@dimen/activity_horizontal_margin"
     >
 
@@ -95,18 +97,22 @@
             </android.support.design.widget.TextInputLayout>
 
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/input_layout_Address"
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_Department"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:hint="enter department"
+                android:id="@+id/xDepartment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                />
 
-                <EditText
-                    android:id="@+id/xAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="enter Address" />
+        </android.support.design.widget.TextInputLayout>
 
-            </android.support.design.widget.TextInputLayout>
+
 
             <RadioGroup
                 android:layout_width="match_parent"
@@ -114,18 +120,18 @@
             <android.support.v7.widget.AppCompatRadioButton
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:text="Restaurant"
+                android:text="student"
                 android:padding="4dp"
-                android:id="@+id/xrdRestaurant"
+                android:id="@+id/xStudent"
                 ></android.support.v7.widget.AppCompatRadioButton>
 
 
             <android.support.v7.widget.AppCompatRadioButton
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:text="Charity"
+                android:text="instructor"
                 android:padding="4dp"
-                android:id="@+id/xrdCharity"
+                android:id="@+id/xInstructor"
                 ></android.support.v7.widget.AppCompatRadioButton>
             </RadioGroup>
 
@@ -136,7 +142,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/xCharityName"
+                    android:id="@+id/xName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="name"
@@ -145,6 +151,58 @@
 
             </android.support.design.widget.TextInputLayout>
 
+            <android.support.design.widget.TextInputLayout
+                android:visibility="gone"
+
+                android:id="@+id/input_layout_Num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+
+                    android:id="@+id/xNum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                         />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:visibility="gone"
+
+            android:id="@+id/input_layout_Grade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+
+                android:hint="enter grade"
+                android:id="@+id/xGrade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+
+            <android.support.design.widget.TextInputLayout
+                android:visibility="gone"
+
+                android:id="@+id/input_layout_CurrentDegree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+
+                    android:hint="enter current degree "
+                    android:id="@+id/xCurrentDegree"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </android.support.design.widget.TextInputLayout>
 
             <Button
                 android:onClick="toSaveInfo"

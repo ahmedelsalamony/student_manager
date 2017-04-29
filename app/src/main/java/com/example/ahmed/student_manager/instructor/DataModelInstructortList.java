@@ -1,21 +1,28 @@
 package com.example.ahmed.student_manager.instructor;
 
-/**
- * Created by ahmed on 4/25/2017.
- */
 
 public class DataModelInstructortList {
 
     private int id;
     private String course_name;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     private String course_code;
     private int course_hours;
     private int max_student_num;
 
 
 
-    public DataModelInstructortList(String course_name, int course_hours,String course_code,int max_student_num ){
+    public DataModelInstructortList(int id ,String course_name, int course_hours,String course_code,int max_student_num ){
         this.course_name=course_name;
+        this.id=id;
         this.course_code=course_code;
         this.course_hours=course_hours;
         this.max_student_num=max_student_num;

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+<android.support.v7.widget.CardView
+android:layout_marginTop="10dp"
+   android:id="@+id/cardView_RequestsStudent"
+    app:cardElevation="5dp"
+
+     android:layout_marginRight="10dp"
+    app:cardCornerRadius="6dp"
+    app:cardMaxElevation="9dp"
+    android:layout_marginLeft="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+    <TextView
+
+        android:paddingLeft="10dp"
+        android:textSize="17sp"
+        android:textColor="#000"
+        android:text="Date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView_DateAttend" />
+
+
+    <TextView
+        android:paddingLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="17sp"
+        android:textColor="#000"
+        android:text="student Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView_NameStudentAttend" />
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <CheckBox
+        android:paddingLeft="10dp"
+android:layout_marginTop="20dp"
+        android:paddingRight="10dp"
+        android:textSize="17sp"
+        android:textColor="#000"
+        android:text="attend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkbox_Attend" />
+    <CheckBox
+        android:paddingLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:paddingRight="10dp"
+        android:textSize="17sp"
+        android:textColor="#000"
+        android:text="not attended"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkbox_NotAttend" />
+    </LinearLayout>
+</LinearLayout>
+
+</android.support.v7.widget.CardView>
+<Space
+    android:layout_width="match_parent"
+    android:layout_height="8dp" />
+</LinearLayout>

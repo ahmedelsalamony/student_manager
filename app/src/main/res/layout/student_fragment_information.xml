@@ -1,0 +1,236 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fef6eb"
+    >
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fef6eb"
+
+              >
+    <!-- TODO: Update blank fragment layout -->
+
+<ImageView
+
+android:layout_marginTop="10dp"
+    android:src="@drawable/logo"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    />
+    <TableRow
+        android:layout_marginTop="30dp"
+        android:weightSum="6"
+        >
+
+        <TextView
+            android:paddingLeft="5dp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:text="name"
+            android:textColor="#000"
+            />
+        <TextView
+            android:id="@+id/textView_StudentFName_Info"
+            android:layout_weight="5"
+            android:textSize="17sp"
+            android:text="name"
+            android:textColor="@color/colorAccent"
+            />
+
+    </TableRow>
+    <TableRow
+        android:weightSum="6"
+        android:layout_marginTop="10dp"
+        >
+
+        <TextView
+            android:textStyle="bold"
+
+            android:paddingLeft="5dp"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:text="username"
+            android:textColor="#000"
+            />
+        <TextView
+            android:id="@+id/textView_StudentName_Info"
+            android:layout_weight="5"
+            android:textSize="17sp"
+            android:text="user name"
+            android:textColor="@color/colorAccent"
+            />
+
+    </TableRow>
+
+    <TableRow
+
+        android:layout_marginTop="10dp"
+        android:weightSum="6"
+        >
+        <TextView
+            android:textStyle="bold"
+
+            android:paddingLeft="5dp"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:text="phone"
+            android:textColor="#000"
+            />
+        <TextView
+            android:textColor="@color/colorAccent"
+
+            android:layout_weight="5"
+            android:id="@+id/textView_StudentPhone_Info"
+            android:paddingRight="10dp"
+            android:textSize="17sp"
+            android:text="phone"
+            />
+
+    </TableRow>
+
+    <TableRow
+
+        android:layout_marginTop="10dp"
+        android:weightSum="6"
+        >
+        <TextView
+            android:textStyle="bold"
+
+            android:paddingLeft="5dp"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:text="E-mail"
+            android:textColor="#000"
+            />
+        <TextView
+
+            android:layout_weight="5"
+            android:id="@+id/textView_StudentEmail_Info"
+            android:paddingRight="10dp"
+            android:textSize="14sp"
+            android:text="E-mail"
+            android:textColor="@color/colorAccent"
+            />
+
+    </TableRow>
+
+
+    <TableRow
+        android:layout_marginTop="10dp"
+        android:weightSum="6"
+        >
+        <TextView
+            android:textStyle="bold"
+
+            android:paddingLeft="5dp"
+
+        android:layout_weight="1"
+            android:paddingRight="10dp"
+            android:textSize="20sp"
+            android:text="Grade"
+            android:textColor="#000"
+            />
+        <TextView
+
+            android:layout_weight="5"
+            android:id="@+id/textView_StudentGrades_Info"
+            android:paddingRight="10dp"
+            android:textSize="17sp"
+            android:text="Grade"
+            android:textColor="@color/colorAccent"
+            />
+
+    </TableRow>
+
+
+
+    <TableRow
+        android:layout_marginTop="10dp"
+        android:weightSum="6"
+        >
+        <TextView
+            android:textStyle="bold"
+
+            android:paddingLeft="5dp"
+            android:layout_weight="1"
+            android:paddingRight="10dp"
+            android:textSize="20sp"
+            android:text="department"
+            android:textColor="#000"
+            />
+
+        <TextView
+
+            android:layout_weight="5"
+            android:id="@+id/textView_StudentDept_Info"
+            android:paddingRight="10dp"
+            android:textSize="17sp"
+            android:text="department"
+            android:textColor="@color/colorAccent"
+            />
+
+    </TableRow>
+
+
+    <TableRow
+
+        android:layout_marginTop="50dp"
+        android:weightSum="6"
+        >
+        <TextView
+            android:textStyle="bold"
+
+            android:paddingLeft="5dp"
+            android:layout_weight="1"
+            android:paddingRight="10dp"
+            android:textSize="20sp"
+            android:text="Current degree"
+            android:textColor="#000"
+            />
+        <TextView
+
+            android:layout_weight="5"
+            android:id="@+id/textView_StudentCurrent_Info"
+            android:paddingRight="10dp"
+            android:textSize="17sp"
+            android:text=" current degree"
+            android:textColor="@color/colorAccent"
+            />
+
+    </TableRow>
+
+
+    <TableRow
+
+        android:layout_marginTop="10dp"
+        android:weightSum="6"
+        >
+        <TextView
+            android:textStyle="bold"
+
+            android:paddingLeft="5dp"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:text="College Number"
+            android:textColor="#000"
+            />
+        <TextView
+
+            android:layout_weight="5"
+            android:id="@+id/textView_Unique_Info"
+            android:textSize="17sp"
+            android:text="unique number"
+            android:textColor="@color/colorAccent"
+            />
+
+
+    </TableRow>
+</TableLayout>
+</ScrollView>

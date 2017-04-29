@@ -35,7 +35,7 @@ public class SplashActivity extends AwesomeSplash {
 
         //Customize Title
         configSplash.setTitleSplash("Student Registeration");
-        configSplash.setTitleTextColor(R.color.colorPrimary);
+        configSplash.setTitleTextColor(R.color.color3);
         configSplash.setTitleTextSize(20f); //float value
         configSplash.setAnimTitleDuration(1500);
         configSplash.setAnimTitleTechnique(Techniques.FlipInX);

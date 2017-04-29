@@ -27,7 +27,7 @@ import static com.daimajia.androidanimations.library.BaseViewAnimator.DURATION;
 
 
 /**
- * Created by ahmed on 3/21/2017.
+ *
  */
 
 public class ForgetPasswordFragment extends Fragment {
@@ -44,6 +44,7 @@ public class ForgetPasswordFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.login_forgrt_password_fragment, parent, false);
+        MainActivity.sFlag=2;
 
         web =new WebServices();
         edRestorePassword= (EditText) v.findViewById(R.id.xRestorePasswordEditText);
@@ -64,8 +65,9 @@ public class ForgetPasswordFragment extends Fragment {
 
                     String userName= edRestorePassword.getText().toString().trim();
                     // TODO  >> Call forget web Service
-                  /*
-                    web.forgetPasswordUser(getActivity(), userName, new request_interface() {
+
+                    Toast.makeText(getActivity(), ""+userName, Toast.LENGTH_SHORT).show();
+                    web.forgetPassword(getActivity(), userName, new request_interface() {
                         @Override
                         public void onResponse(String response) {
                             try {
@@ -75,8 +77,8 @@ public class ForgetPasswordFragment extends Fragment {
 
                                     final AlertDialog.Builder dialog =new AlertDialog.Builder(getActivity());
                                     dialog.setCancelable(true);
-                                    dialog.setTitle("RE-Restaurant");
-                                    dialog.setIcon(R.drawable.green);
+                                    dialog.setTitle("Student Registeration System");
+                                    dialog.setIcon(R.drawable.logo);
                                     dialog.setMessage("Your Correct password Sent to your E-mail");
                                     dialog.setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                         @Override
@@ -89,7 +91,7 @@ public class ForgetPasswordFragment extends Fragment {
                                             android.support.v4.app.FragmentManager fm=getFragmentManager();
                                             android.support.v4.app.FragmentTransaction ft=fm.beginTransaction();
                                             ft.addToBackStack(null);
-                                            ft.replace(R.id.xPlaceHolder,loginFragment);
+                                            ft.replace(R.id.activity_main,loginFragment);
                                             ft.commit();
 
 
@@ -98,7 +100,7 @@ public class ForgetPasswordFragment extends Fragment {
 
                                     dialog.show();
                                 }
-                                else
+                                else if(password_response.equals("notFound"))
                                 {
                                     Toast.makeText(getActivity(), " not found account with user name", Toast.LENGTH_LONG).show();
 
@@ -114,7 +116,7 @@ public class ForgetPasswordFragment extends Fragment {
 
                         }
                     });
-*/
+
 
                 }
 
@@ -126,7 +128,7 @@ public class ForgetPasswordFragment extends Fragment {
     }
     @Override
     public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
-        return CubeAnimation.create(CubeAnimation.UP, enter, DURATION);
+        return CubeAnimation.create(CubeAnimation.UP, enter, 500);
     }
 
 }

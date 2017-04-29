@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.ahmed.student_manager.student.DiscussionFragment">
+
+
+    <Button
+        android:visibility="gone"
+        android:id="@+id/Button_firstInst"
+        android:text="first instructor"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:visibility="gone"
+        android:id="@+id/Button_secondtInst"
+        android:text="second instructor"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:visibility="gone"
+        android:id="@+id/Button_thirdInst"
+        android:text="third instructor"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content" />
+
+ <ListView
+     android:layout_marginTop="30dp"
+     android:id="@+id/LisView_Asks"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"/>
+
+<EditText
+    android:id="@+id/Edit_ask"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/Button_ask"
+        android:text="ask"
+        android:layout_gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

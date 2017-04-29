@@ -28,7 +28,7 @@ import static com.daimajia.androidanimations.library.BaseViewAnimator.DURATION;
 public class LoginFragment extends Fragment {
 
 
-    private EditText mPasswordView;
+    private AutoCompleteTextView mPasswordView;
     private AutoCompleteTextView mUserName;
     private Button signUp;
 
@@ -44,9 +44,7 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View v= inflater.inflate(R.layout.login_fragment_login, parent, false);
 
-        mPasswordView = (EditText) v.findViewById(R.id.password);
-        mUserName = (AutoCompleteTextView)v.findViewById(R.id.email);
-
+        MainActivity.sFlag=1;
 
 
         web= new WebServices();
@@ -68,15 +66,12 @@ public class LoginFragment extends Fragment {
 
 
         // Set up the login form.
-
-
+        mPasswordView = (AutoCompleteTextView) v.findViewById(R.id.password);
+        mUserName = (AutoCompleteTextView) v.findViewById(R.id.email);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-//                if (id == R.id.login ) {
-//                    attemptLogin();
-//                    return true;
-//                }
+
                 return false;
             }
         });
