@@ -16,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.ahmed.student_manager.admin.adm_Home;
 import com.example.ahmed.student_manager.instructor.inst_Home_Instructor_activity;
 
 
@@ -125,15 +126,15 @@ public class WebServices {
                         editor.putString("user_type",user_type);
                         editor.putString("name",name);
                         editor.putString("unique_num",unique_num);
-                        editor.putFloat("grade", Float.parseFloat(grade));
+                        editor.putString("grade", grade);
                         editor.putString("current_degree",current_degree);
                         editor.putString("department", department);
 
 
                         editor.commit();
                         if (user_type.equals("admin")) {
-
-
+                            Intent i=new Intent(activity,adm_Home.class);
+                            activity.startActivity(i);
                         }
                         else if (user_type.equals("student")) {
 
