@@ -61,11 +61,12 @@ public class WebServices {
     public static String STUDENTREPLY = "student_reply";
 
 
+
     // TODO    "  courses_registered "
     public static String ID_ReGISTERED = "id";
     public static String STUDENTUID = "student_uid";
     public static String COURSEUID = "course_uid";
-    public static String INSTRUCTORUID = "instructor_uid";
+
 
 
     // TODO Tag that use it to know type of WebService   >> you can here put the TAG  of your method Name ------//
@@ -143,9 +144,9 @@ public class WebServices {
 
                         editor.commit();
                         if (user_type.equals("admin")) {
-
+                            Intent i=new Intent(activity,adm_Home.class);
+                            activity.startActivity(i);
                         }
-
                         else if (user_type.equals("student")) {
                          activity.startActivity(new Intent(activity, NavigationHomeActivity.class));
                         }
@@ -193,7 +194,7 @@ public class WebServices {
     // TODO Register Method --------------------//
 
     public void addUser(final Activity activity, final String name, final String unique_num, final String department,
-                        final String grade ,  final String current_degree,
+                        final double grade ,  final String current_degree,
                         final String phone,  final String email, final String user_name,
                         final String password,  final String user_type) {
 
@@ -205,8 +206,7 @@ public class WebServices {
         StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
-                Toast.makeText(activity, "added successfully.", Toast.LENGTH_SHORT).show();
+                b.setCancelable(true);
             }
 
 
