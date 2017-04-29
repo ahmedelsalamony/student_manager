@@ -16,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.ahmed.student_manager.admin.adm_Home;
 import com.example.ahmed.student_manager.instructor.inst_Home_Instructor_activity;
 import com.example.ahmed.student_manager.student.NavigationHomeActivity;
 
@@ -64,6 +65,7 @@ public class WebServices {
 
     // TODO    "  courses_registered "
     public static String ID_ReGISTERED = "id";
+    public static String INSTRUCTORUID = "instructor_uid";
     public static String STUDENTUID = "student_uid";
     public static String COURSEUID = "course_uid";
 
@@ -194,7 +196,7 @@ public class WebServices {
     // TODO Register Method --------------------//
 
     public void addUser(final Activity activity, final String name, final String unique_num, final String department,
-                        final double grade ,  final String current_degree,
+                        final String grade ,  final String current_degree,
                         final String phone,  final String email, final String user_name,
                         final String password,  final String user_type) {
 
